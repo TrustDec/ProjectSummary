@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <h1 v-text="title"></h1>
+    <ul>
+      <li v-for="item in items" v-bind:class="[finished,liClass]">
+        {{item.label}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
-
 export default {
-  name: 'app',
-  components: {
-    Hello
+  data: function(){
+    return {
+      title: 'this is a todo list',
+      items: [{
+        label: 'coding',
+        isFinished: false
+      },
+      {
+        label: 'walking',
+        isFinished:true
+      }
+      ],
+      liClass:"liClass",
+      finished:"finished"
+    }
   }
 }
 </script>
@@ -24,5 +38,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.liClass{
+  font-size: 20px;
+}
+.finished {
+  color:red;
+  font-weight: bold;
 }
 </style>
