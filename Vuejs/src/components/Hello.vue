@@ -1,38 +1,34 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>   
+    <h1>{{ msgfromfather }}</h1>
+    <button v-on:click="onClickMe">open mouse!</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'hello',
-  data () {
+  data:function(){
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'hello from component a!'
+    }
+  },
+  props:['msgfromfather'],
+  events: {
+    'onAddnew': function(items){
+      console.log(items);
+    }
+  },
+  methods: {
+    onClickMe:function(){
+      //console.log(this.msgfromfather);
+      this.$dispatch('child-tell-me-something',this.msg);
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
+h1 {
   color: #42b983;
 }
 </style>

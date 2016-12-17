@@ -7,25 +7,35 @@
         {{item.label}}
       </li>
     </ul>
+    <p>child tell me:{{ childWords }}</p>
+    <Hello msgfromfather='you die!'  v-on:child-tell-me-something="listenToMyBoy"></Hello>
   </div>
 </template>
 
 <script>
-import Store from './components/store.js';
+import Store from './components/store';
+import Hello from './components/Hello';
 export default {
   data: function(){
     return {
       title: 'this is a todo list',
       items: Store.fetch(),
       newItem:"",
+      childWords:''
     }
   },
+  components:{Hello},
   watch: {
     items:{
       handler:function(items){
         Store.save(items);
       },
       deep:true
+    }
+  },
+  events: {
+    'child-tell-me-something':function(msg){
+      this.childWords=msg;
     }
   },
   methods: {
@@ -38,7 +48,12 @@ export default {
           isFinished:false
         });
         this.newItem="";
-        Store.save();
+        //console.log(this);
+        // this.$broadcast('onAddnew',this.items); 2.0:丢弃
+        //Store.save();
+      },
+      listenToMyBoy:function(msg){
+       this.childWords = msg;
       }
   }
 }
