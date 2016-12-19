@@ -7,7 +7,7 @@
         {{item.label}}
       </li>
     </ul>
-    <p>child tell me:{{ childWords }}</p>
+    <p>child tell me: <span class="childWords">{{ childWords }}</span></p>
     <Hello msgfromfather='you die!'  v-on:child-tell-me-something="listenToMyBoy"></Hello>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
         });
         this.newItem="";
         //console.log(this);
-        // this.$broadcast('onAddnew',this.items); 2.0:丢弃
+         this.$emit('onAddnew',this.items); //2.0:丢弃
         //Store.save();
       },
       listenToMyBoy:function(msg){
@@ -76,6 +76,10 @@ export default {
 li {
   color:green;
   font-size: 20px;
+  font-weight: bold;
+}
+.childWords {
+  color: #42b983;
   font-weight: bold;
 }
 </style>
