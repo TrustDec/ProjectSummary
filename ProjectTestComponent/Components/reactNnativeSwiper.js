@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
+	AppRegistry,
   StyleSheet,
   Text,
   View
@@ -36,22 +36,20 @@ var styles = StyleSheet.create({
   }
 })
 
-var swiper = React.createClass({
-  render: function() {
+export default class SwiperDome extends Component {
+  render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}>
+     <Swiper style={styles.wrapper} showsButtons={true}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
+          <Text style={styles.text}>呵呵</Text>
         </View>
         <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
+          <Text style={styles.text}>哈哈</Text>
         </View>
         <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
+          <Text style={styles.text}>嘻嘻</Text>
         </View>
       </Swiper>
-    )
+    );
   }
-})
-
-module.exports = swiper;
+}
