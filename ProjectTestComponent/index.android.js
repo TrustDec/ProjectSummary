@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import swiper from './Component/react-native-swiper';
+
 export default class ProjectTestComponent extends Component {
   render() {
     return (
@@ -50,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ProjectTestComponent', () => ProjectTestComponent);
+AppRegistry.registerComponent('ProjectTestComponent', () => swiper);
